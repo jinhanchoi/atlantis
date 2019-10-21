@@ -1,0 +1,46 @@
+.header-container{
+    height: 100%;
+    width: auto;
+    display: block;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-left: auto;
+}
+.navbar-inner{
+    height: 100%;
+    position: relative;
+}
+.sticky-nav{
+    width:100%;
+    align-items: center;
+    position: fixed;
+    top:0;
+}
+.logo{
+    position: absolute;
+    display:flex;
+    align-items: center;
+    height: 100%;
+    line-height: 1;
+}
+.navbar-left{
+    left: 0!important;
+}
+.navbar-right{
+    right: 0!important;
+}
+.menu{
+    display: flex;
+}
+nav{
+    height: 100%;
+    line-height: 1;
+    display: block;
+    text-align: right;
+    position: absolute;
+}
+nav ul li{
+    list-style: none;
+    position: relative;
+    display: list-item;
+}

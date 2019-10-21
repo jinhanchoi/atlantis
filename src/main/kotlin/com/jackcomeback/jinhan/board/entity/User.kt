@@ -1,17 +1,24 @@
 package com.jackcomeback.jinhan.board.entity
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+
+import com.jackcomeback.jinhan.board.value.Address
+import javax.persistence.*
 
 @Entity
+@Table(name="User")
 data class User(
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
-        var id: Int? = null,
+        @Column(name="USER_ID")
+        var id: Long? = null,
+        @Column(name="LOGIN_ID")
+        var loginId: String,
+        @Column(name="NAME")
         var name: String,
-        var password: String?) {
+        @Column(name="PASSWORD")
+        var password: String?,
+        @Embedded
+        var address: Address?) {
     //기본생성자 무조건 있어야 함.
-    constructor() : this(null, "","")
+    constructor() : this(null, "","","",null)
 }

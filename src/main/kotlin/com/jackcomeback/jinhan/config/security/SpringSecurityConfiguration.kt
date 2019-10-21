@@ -13,7 +13,7 @@ class SpringSecurityConfiguration() : WebSecurityConfigurerAdapter(){
 
     override fun configure(web: WebSecurity){
         web.ignoring()
-                .antMatchers("/User")
+                .antMatchers("/User").antMatchers("/User/*")
     }
     override fun configure(http: HttpSecurity){
         http.authorizeRequests()

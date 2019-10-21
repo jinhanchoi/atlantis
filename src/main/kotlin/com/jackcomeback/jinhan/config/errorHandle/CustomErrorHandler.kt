@@ -16,7 +16,7 @@ class CustomErrorHandler(@Autowired errorAttributes: ErrorAttributes) : Abstract
     @RequestMapping(value="/error", produces = [MediaType.APPLICATION_JSON_VALUE])
     @ResponseBody
     fun handleError(request: HttpServletRequest) : Map<String, Any>{
-        
+
         return super.getErrorAttributes(request,false)
     }
     override fun getErrorPath(): String {

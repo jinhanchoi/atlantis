@@ -21,7 +21,15 @@ class UserController(val userRepo : UserRepository, val boardRepo : BoardReposit
         val searchId : Long = saved!!.id!!
         val savedName = userRepo.findById(searchId)
 
-        boardRepo.save(Contents(bodyContents = "board body contents is ...", writer = saved))
+        //boardRepo.save(Contents(bodyContents = "board body contents is ...", writer = saved))
         return savedName.get()
+    }
+
+    @PostMapping("/Contents/{id}")
+    fun saveContents(@PathVariable("id") id: Long , @RequestBody contents: Contents) : Contents{
+        val savedName = userRepo.findById(id)
+        contents.writer.id = id
+        println(contents.writer.id.toString())
+       return boardRepo.save(contents)
     }
 }

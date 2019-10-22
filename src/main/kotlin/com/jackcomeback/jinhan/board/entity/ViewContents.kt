@@ -1,16 +1,16 @@
 package com.jackcomeback.jinhan.board.entity
 
+import org.springframework.data.annotation.Immutable
 import javax.persistence.*
 
 @Entity
 @Table(name="CONTENTS")
-data class Contents(
+@Immutable
+data class ViewContents(
         @Id
         @Column(name="CONTENTS_ID")
         @GeneratedValue(strategy = GenerationType.AUTO)
         var id: Long?=null,
         @Column(name="BODY_CONTENTS")
-        var bodyContents: String,
-        @ManyToOne
-        var writer : User
+        var bodyContents: String
 )

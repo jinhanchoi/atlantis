@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Immutable
 import javax.persistence.*
 
 @Entity
-@Table(name="CONTENTS")
 @Immutable
 data class ViewContents(
         @Id

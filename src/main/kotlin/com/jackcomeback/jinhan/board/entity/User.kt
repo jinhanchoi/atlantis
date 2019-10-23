@@ -3,6 +3,7 @@ package com.jackcomeback.jinhan.board.entity
 
 import com.jackcomeback.jinhan.board.value.Address
 import javax.persistence.*
+import kotlin.jvm.Transient
 
 @Entity
 @Table(name="User")
@@ -19,9 +20,14 @@ data class User(
         var password: String?,
         @Embedded
         var address: Address?,
-        @OneToMany(fetch = FetchType.EAGER)
-        @JoinColumn(name="WRITER_USER_ID")
-        var contents: List<ViewContents> = emptyList()) {
+        @Transient
+        private var _contents: MutableList<Contents> = mutableListOf()) {
     //기본생성자 무조건 있어야 함.
     constructor() : this(null, "","","",null)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "writer")
+    var contents : MutableList<Contents> = _contents
+    get() {return field}
+    set(value){
+        field = value
+    }
 }

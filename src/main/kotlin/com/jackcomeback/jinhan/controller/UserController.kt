@@ -1,6 +1,7 @@
 package com.jackcomeback.jinhan.controller
 
 import com.jackcomeback.jinhan.board.entity.Contents
+import com.jackcomeback.jinhan.board.entity.Tester
 import com.jackcomeback.jinhan.board.entity.User
 import com.jackcomeback.jinhan.board.repo.BoardRepository
 import com.jackcomeback.jinhan.board.repo.UserRepository
@@ -28,8 +29,13 @@ class UserController(val userRepo : UserRepository, val boardRepo : BoardReposit
     @PostMapping("/Contents/{id}")
     fun saveContents(@PathVariable("id") id: Long , @RequestBody contents: Contents) : Contents{
         val savedName = userRepo.findById(id)
-        contents.writer.id = id
-        println(contents.writer.id.toString())
+        contents.writer!!.id = id
+        println(contents.writer!!.id.toString())
        return boardRepo.save(contents)
+    }
+    @PostMapping("/Tester")
+    fun tester(): Boolean{
+        val tester = Tester("","")
+        return true
     }
 }
